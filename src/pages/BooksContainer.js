@@ -25,10 +25,10 @@ class BooksContainer extends PureComponent {
   render() {
     const { books } = this.state;
     return (
-      <div>
+      <main>
         <BookList books={books} />
         <AddBook />
-      </div>
+      </main>
     );
   }
 }
