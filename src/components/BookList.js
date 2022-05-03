@@ -1,34 +1,17 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Book from './Book';
 
-class BookList extends PureComponent {
-  render() {
-    const { books } = this.props;
-    return (
-      <ul>
-        {books.map((book) => (
-          <Book key={book.id} book={book} />
-        ))}
-      </ul>
-    );
-  }
-}
+const BookList = () => {
+  const books = useSelector((state) => state.books);
 
-BookList.defaultProps = {
-  books: [],
-};
-
-BookList.propTypes = {
-  books: PropTypes.arrayOf(
-    PropTypes.shape(
-      {
-        id: PropTypes.number,
-        title: PropTypes.string,
-        author: PropTypes.string,
-      },
-    ),
-  ),
+  return (
+    <ul>
+      {books.map((book) => (
+        <Book key={book.id} book={book} />
+      ))}
+    </ul>
+  );
 };
 
 export default BookList;
