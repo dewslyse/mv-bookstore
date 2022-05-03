@@ -1,19 +1,24 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/books';
 
-class Book extends PureComponent {
-  render() {
-    const { book } = this.props;
+const Book = (props) => {
+  const { book } = props;
+  const dispatch = useDispatch();
 
-    return (
-      <li>
-        <h2>{book.title}</h2>
-        <p>{book.author}</p>
-        <button type="button">Remove</button>
-      </li>
-    );
-  }
-}
+  const handleRemove = (id) => {
+    dispatch(removeBook(id));
+  };
+
+  return (
+    <li>
+      <h2>{book.title}</h2>
+      <p>{book.author}</p>
+      <button type="button" onClick={() => handleRemove(book.id)}>Remove</button>
+    </li>
+  );
+};
 
 Book.defaultProps = {
   book: [],
@@ -22,6 +27,7 @@ Book.defaultProps = {
 Book.propTypes = {
   book: PropTypes.shape(
     {
+      id: PropTypes.string,
       title: PropTypes.string,
       author: PropTypes.string,
     },
