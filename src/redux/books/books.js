@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import { fetchBooksFromAPI, deleteBookFromAPI } from '../../api/api';
+// import { v4 as uuidv4 } from 'uuid';
+import { fetchBooksFromAPI, deleteBookFromAPI, addBookToAPI } from '../../api/api';
 
 const ADDED_BOOK = 'mv-bookstore/books/ADDED_BOOK';
 const REMOVED_BOOK = 'mv-bookstore/books/REMOVED_BOOK';
@@ -23,9 +23,13 @@ const initialState = [
   // },
 ];
 
+// const sortedBooks = (books) => books.sort((a, b) => a.title - b.title);
+
 // Action Creators
 export const getBooks = () => async (dispatch) => {
   const allBooks = await fetchBooksFromAPI();
+  // .then().sort((a, b) => a.title - b.title);
+  // const sortedBooks = (dispatch) = allBooks.result.sort((a, b) => a.title - b.title);
 
   const payload = Object.keys(allBooks).map((key) => {
     const { title, author, category } = allBooks[key][0];
@@ -42,10 +46,13 @@ export const getBooks = () => async (dispatch) => {
   });
 };
 
-export const addBook = (title, author) => ({
-  type: ADDED_BOOK,
-  payload: { title, author, id: uuidv4() },
-});
+export const addBook = (book) => async (dispatch) => {
+  addBookToAPI(book);
+  dispatch({
+    type: ADDED_BOOK,
+    payload: book,
+  });
+};
 
 export const removeBook = (id) => async (dispatch) => {
   deleteBookFromAPI(id);

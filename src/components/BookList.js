@@ -5,6 +5,8 @@ import Book from './Book';
 
 const BookList = () => {
   const books = useSelector((state) => state.books);
+  // const sortedBooks = books.sort((a, b) => a.title - b.title);
+
   const dispatch = useDispatch();
   console.log(books);
 
