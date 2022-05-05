@@ -23,7 +23,7 @@ const initialState = [
   // },
 ];
 
-// const sortedBooks = (books) => books.sort((a, b) => a.title - b.title);
+const orderedBooks = (books) => books.sort((a, b) => ((a.title > b.title) ? 1 : -1));
 
 // Action Creators
 export const getBooks = () => async (dispatch) => {
@@ -31,7 +31,17 @@ export const getBooks = () => async (dispatch) => {
   // .then().sort((a, b) => a.title - b.title);
   // const sortedBooks = (dispatch) = allBooks.result.sort((a, b) => a.title - b.title);
 
-  const payload = Object.keys(allBooks).map((key) => {
+  // allBooks.sort((a, b) => {
+  //   if (a.title.toUpperCase() < b.title.toUpperCase()) {
+  //     return -1;
+  //   }
+  //   if (a.title.toUpperCase() > b.title.toUpperCase()) {
+  //     return 1;
+  //   }
+  //   return 0;
+  // });
+
+  const books = Object.keys(allBooks).map((key) => {
     const { title, author, category } = allBooks[key][0];
     return {
       item_id: key,
@@ -40,9 +50,12 @@ export const getBooks = () => async (dispatch) => {
       category,
     };
   });
+
+  // const sortedPayload = payload.sort((a, b) => a.title - b.title);
+
   dispatch({
     type: FETCHED_BOOKS,
-    payload,
+    payload: orderedBooks(books),
   });
 };
 
@@ -64,14 +77,13 @@ export const removeBook = (id) => async (dispatch) => {
 
 // Reducer
 const booksReducer = (state = initialState, action) => {
+  // const books =
   switch (action.type) {
     case FETCHED_BOOKS:
-      return action.payload;
+      return action.payload; // orderedBooks(action.payload);
     case ADDED_BOOK:
-      return [
-        ...state,
-        action.payload,
-      ];
+      return orderedBooks([...state,
+        action.payload]);
     case REMOVED_BOOK:
       return [
         ...state.filter((book) => (book.item_id !== action.payload)),
