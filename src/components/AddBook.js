@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../redux/books/books';
 
 const AddBook = () => {
@@ -12,7 +13,14 @@ const AddBook = () => {
     const form = document.querySelector('form');
 
     if (title.trim() && author.trim()) {
-      dispatch(addBook(title, author));
+      dispatch(addBook(
+        {
+          item_id: uuidv4(),
+          title,
+          author,
+          category: '',
+        },
+      ));
       form.reset();
     }
   };
