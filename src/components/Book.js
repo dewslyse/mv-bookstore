@@ -15,7 +15,9 @@ const Book = (props) => {
     <li>
       <h2>{book.title}</h2>
       <p>{book.author}</p>
-      <button type="button" onClick={() => handleRemove(book.id)}>Remove</button>
+      <button type="button" onClick={() => handleRemove(book.item_id)}>
+        Remove
+      </button>
     </li>
   );
 };
@@ -27,7 +29,7 @@ Book.defaultProps = {
 Book.propTypes = {
   book: PropTypes.shape(
     {
-      id: PropTypes.string,
+      item_id: PropTypes.string,
       title: PropTypes.string,
       author: PropTypes.string,
     },

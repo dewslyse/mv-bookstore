@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { fetchBooksFromAPI } from '../../api/api';
+import { fetchBooksFromAPI, deleteBookFromAPI } from '../../api/api';
 
 const ADDED_BOOK = 'mv-bookstore/books/ADDED_BOOK';
 const REMOVED_BOOK = 'mv-bookstore/books/REMOVED_BOOK';
@@ -47,10 +47,13 @@ export const addBook = (title, author) => ({
   payload: { title, author, id: uuidv4() },
 });
 
-export const removeBook = (id) => ({
-  type: REMOVED_BOOK,
-  payload: id,
-});
+export const removeBook = (id) => async (dispatch) => {
+  deleteBookFromAPI(id);
+  dispatch({
+    type: REMOVED_BOOK,
+    payload: id,
+  });
+};
 
 // Reducer
 const booksReducer = (state = initialState, action) => {
