@@ -12,12 +12,36 @@ const Book = (props) => {
   };
 
   return (
-    <li>
-      <h2>{book.title}</h2>
-      <p>{book.author}</p>
-      <button type="button" onClick={() => handleRemove(book.item_id)}>
-        Remove
-      </button>
+    <li className="book-card">
+      <div className="book-details">
+        <p className="category">General</p>
+        <h2 className="book-title">{book.title}</h2>
+        <p className="book-author">{book.author}</p>
+        <button className="btn" type="button">Comments</button>
+        <button className="btn" type="button" onClick={() => handleRemove(book.item_id)}>
+          Remove
+        </button>
+        <button className="btn" type="button">Edit</button>
+      </div>
+
+      <div className="progress-col">
+        <div className="progress" />
+        <div className="progress-detail">
+          <h3 className="percent">25%</h3>
+          <p className="completed">Completed</p>
+        </div>
+      </div>
+
+      <div className="chap-col">
+        <p className="current-chap">Current chapter</p>
+        <p className="chap">
+          Chapter
+          <span>
+            {Math.floor(Math.random() * 16)}
+          </span>
+        </p>
+        <button className="progress-btn" type="button">Update progress</button>
+      </div>
     </li>
   );
 };

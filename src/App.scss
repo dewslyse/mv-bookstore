@@ -5,7 +5,8 @@ $azure: #0290ff;
 $black: #121212;
 $white: #fff;
 $grey-border: #e8e8e8;
-// font-family: 'Roboto Slab', serif;
+$cool-blue: #4386bf;
+$medium-blue: #307bbe;
 
 * {
   margin: 0;
@@ -29,6 +30,7 @@ body {
   height: 5.938rem;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid $grey-border;
 }
 
 .navbar {
@@ -84,4 +86,138 @@ a.active {
   color: $azure;
   height: 1.375rem;
   width: 1.375rem;
+}
+
+.book-list {
+  margin: 2.375rem auto 1.562rem;
+}
+
+.book-card {
+  list-style: none;
+  background-color: $white;
+  border: 1px solid $grey-border;
+  border-radius: 4px;
+  padding: 2rem 1.688rem 1.75rem;
+  font-family: 'Roboto Slab', serif;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.938rem;
+}
+
+.book-details {
+  width: 46.5%;
+}
+
+.category {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: $black;
+  opacity: 0.5;
+  margin-bottom: 0.25rem;
+}
+
+.book-title {
+  color: $black;
+  font-size: 1.375rem;
+  font-weight: bold;
+  letter-spacing: -0.2px;
+}
+
+.book-author,
+.btn {
+  color: $cool-blue;
+  font-weight: 300;
+  font-size: 0.875rem;
+  font-family: 'Roboto Slab', serif;
+}
+
+.book-author {
+  margin-bottom: 1.313rem;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+
+  &:nth-of-type(1) {
+    padding-right: 0.938rem;
+  }
+
+  &:nth-of-type(2) {
+    padding: 0 0.938rem;
+    border-left: 1px solid $grey-border;
+    border-right: 1px solid $grey-border;
+    cursor: pointer;
+  }
+
+  &:nth-of-type(3) {
+    padding-left: 0.938rem;
+  }
+}
+
+.progress-col {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid $grey-border;
+  padding-right: 4.938rem;
+}
+
+.progress {
+  height: 4.25rem;
+  width: 4.25rem;
+  border: solid 5px $grey-border;
+  border-top-color: $medium-blue;
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.progress-detail {
+  margin-left: 1.313rem;
+}
+
+.percent {
+  font-size: 2rem;
+  font-weight: normal;
+  color: $black;
+}
+
+.completed {
+  font-size: 0.875rem;
+  opacity: 0.5;
+}
+
+.chap-col {
+  margin-left: 3.688rem;
+}
+
+.current-chap,
+.progress-btn {
+  text-transform: uppercase;
+  font-size: 0.813rem;
+  color: $black;
+  opacity: 0.5;
+}
+
+.chap {
+  font-size: 1rem;
+  letter-spacing: -0.4px;
+  margin: 0.438rem 0 1.438rem;
+
+  span {
+    margin-left: 5px;
+  }
+}
+
+.progress-btn {
+  font-family: 'Roboto Slab', serif;
+  width: 11.5rem;
+  letter-spacing: 0.5px;
+  opacity: 1;
+  border: none;
+  color: $white;
+  background-color: $azure;
+  border-radius: 4px;
+  padding: 0.438rem 1.188rem 0.5rem 1.375rem;
 }
