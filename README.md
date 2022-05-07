@@ -8,12 +8,16 @@
 ## Built With
 
 - ReactJS
+- Redux
 - CSS/SCSS
+- External API
 
 
-<!-- ## Live site 🚀
+## Live site 🚀
 
-🔗 [Live Site Link](https://dewslyse.github.io/mv-bookstore) -->
+🔗 [Heroku](https://mv-bookstore.herokuapp.com/)
+
+🔗 [Netlify](https://bookstore-dewslyse.netlify.app/)
 
 
 ## Getting Started
