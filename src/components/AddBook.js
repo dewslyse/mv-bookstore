@@ -26,14 +26,14 @@ const AddBook = () => {
   };
 
   return (
-    <>
-      <h2>Add new book</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <h2 className="new-book">Add new book</h2>
+      <form className="form" onSubmit={handleSubmit}>
         <input type="text" id="title" placeholder="Book title" required />
         <input type="text" id="author" placeholder="Author" required />
-        <button type="submit">Add book</button>
+        <button className="submit-btn" type="submit">Add book</button>
       </form>
-    </>
+    </div>
   );
 };
 
