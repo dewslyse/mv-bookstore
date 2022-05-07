@@ -5,6 +5,11 @@
 > A user friendly Bookstore website built with ReactJS.
 
 
+## Screenshot
+
+<img src="./screenshot.png"> 
+
+
 ## Built With
 
 - ReactJS
